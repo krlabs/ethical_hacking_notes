@@ -1,4 +1,4 @@
- # Ethical Hacking Notes by _Cr0n_
+ # Ethical Hacking Notes by _Cr0n_ 🇺🇦💪
 
 ![Ethical Hacking](https://img.shields.io/badge/Ethical%20Hacking-Exploit%20the%20Knowledge-red?style=for-the-badge&logo=linux)
 
