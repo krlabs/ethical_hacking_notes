@@ -60,6 +60,8 @@ FILES
 /wp-includes/
 /wp-content/uploads/
 
+https://github.com/krlabs/fuzzlists/blob/main/wp-fuzzlist.txt
+
 @@@@@@@@@@@@@@@@@@@@@@
 XML-RPC EXPLOITATION
 @@@@@@@@@@@@@@@@@@@@@@
