@@ -34,6 +34,10 @@ curl https://example.com/wp-json/wp/v2/comments | jq
 curl https://example.com/wp-json/wp/v2/categories | jq
 
 curl -s -X GET https://example.com/wp-includes/ | html2text - аналіз лістингу директорій у командному рядку
+curl -s -X GET https://example.com | sed 's/href=/\n/g' | sed 's/src=/\n/g' | grep 'themes' | cut -d"'" -f2
+curl -s -X GET https://exmaple.com | sed 's/href=/\n/g' | sed 's/src=/\n/g' | grep 'jquery' | cut -d"'" -f2
+curl -X POST -d "<methodCall><methodName>system.listMethods</methodName></methodCall>" https://example.com/xmlrpc.php
+curl -X POST -d "<methodCall><methodName>wp.getUsersBlogs</methodName><params><param><value>admin</value></param><param><value>CORRECT-PASSWORD</value></param></params></methodCall>" http://example.com/xmlrpc.php
 
 @@@@@@@@@@@@@@@@@@@@@@
 FILES 
