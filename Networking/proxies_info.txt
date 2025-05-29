@@ -1,11 +1,11 @@
 Проксі-чекери:
 
-https://hide.mn/en/proxy-checker/ - топ
+https://hide.mn/en/proxy-checker/ - онлайн-чекер
 https://proxy6.net/checker
-https://openproxy.space/software/proxy-checker - windows
-https://proxychecker.co - windows
+https://openproxy.space/software/proxy-checker - windows проксі-чекер
+https://proxychecker.co - windows проксі-чекер
 
-Безкоштовні прроксі:
+Безкоштовні проксі:
 
 https://crackingx.com/forums/2/
 https://free-proxy-list.net
