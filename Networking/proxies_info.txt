@@ -24,7 +24,7 @@ https://socks-proxy.net/
 https://github.com/mubeng/mubeng/ - ip проксі ротатор
 https://github.com/nicksherron/proxi
 https://github.com/snawoot/hola-proxy
-https://github.com/bluet/proxybroker2
+https://github.com/bluet/proxybroker2 - шукач, чекер, сервер проксі
 https://github.com/mahdibland/V2RayAggregator
 
 Веб-проксі:
