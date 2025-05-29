@@ -26,6 +26,8 @@ https://github.com/nicksherron/proxi
 https://github.com/snawoot/hola-proxy
 https://github.com/bluet/proxybroker2 - шукач, чекер, сервер проксі
 https://github.com/mahdibland/V2RayAggregator
+https://github.com/SenseUnit/dumbproxy
+https://github.com/Snawoot/opera-proxy
 
 Веб-проксі:
 
