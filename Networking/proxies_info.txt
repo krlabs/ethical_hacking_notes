@@ -1,0 +1,34 @@
+Проксі-чекери:
+
+https://hide.mn/en/proxy-checker/ - топ
+https://proxy6.net/checker
+https://openproxy.space/software/proxy-checker - windows
+https://proxychecker.co - windows
+
+Безкоштовні прроксі:
+
+https://crackingx.com/forums/2/
+https://free-proxy-list.net
+https://api.proxyscrape.com/v2/?request=displayproxies&protocol=all&timeout=750&country=all
+
+Платні проксі:
+
+https://proxy-seller.com
+https://www.proxyrack.com
+https://stormproxies.com
+https://free-proxy-list.net/rotating-proxy.html
+https://socks-proxy.net/
+
+Програмне забезпечення для роботи з проксі:
+
+https://github.com/mubeng/mubeng/ - ip проксі ротатор
+https://github.com/nicksherron/proxi
+https://github.com/snawoot/hola-proxy
+https://github.com/bluet/proxybroker2
+https://github.com/mahdibland/V2RayAggregator
+
+Веб-проксі:
+
+https://www.my-proxy.com/
+https://hide.me/en/proxy
+http://www.kproxy.com/
