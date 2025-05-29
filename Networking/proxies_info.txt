@@ -21,7 +21,7 @@ https://socks-proxy.net/
 
 Програмне забезпечення для роботи з проксі:
 
-https://github.com/mubeng/mubeng/ - ip проксі ротатор
+https://github.com/mubeng/mubeng/ - ip проксі ротатор (барахлить)
 https://github.com/nicksherron/proxi - проксі завантажувач, чекер
 https://github.com/snawoot/hola-proxy - якісний проксі-клієнт+ linux all-in-one (сервер, завантажувач, чекер)
 https://github.com/Snawoot/opera-proxy - форк hola-проксі
