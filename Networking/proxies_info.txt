@@ -36,6 +36,7 @@ https://github.com/Snawoot/opera-proxy - форк hola-проксі
 https://github.com/SenseUnit/dumbproxy - проксі-клієнт
 https://github.com/bluet/proxybroker2 - шукач, чекер, сервер проксі
 https://github.com/mahdibland/V2RayAggregator - ві-рей проксі
+https://github.com/projectdiscovery/proxify
 
 Веб-проксі:
 
