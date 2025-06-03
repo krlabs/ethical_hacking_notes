@@ -9,15 +9,19 @@ https://proxychecker.co - windows проксі-чекер
 
 https://crackingx.com/forums/2/
 https://free-proxy-list.net
+https://free-proxy-list.net/rotating-proxy.html
 https://api.proxyscrape.com/v2/?request=displayproxies&protocol=all&timeout=750&country=all
 https://hide.mn/en/proxy-list/
 
 Платні проксі:
 
+https://proxyscrape.com/
+https://proxymesh.com/
+https://decodo.com/
+https://proxyempire.io/
 https://proxy-seller.com
 https://www.proxyrack.com
 https://stormproxies.com
-https://free-proxy-list.net/rotating-proxy.html
 https://socks-proxy.net/
 
 Програмне забезпечення для роботи з проксі:
