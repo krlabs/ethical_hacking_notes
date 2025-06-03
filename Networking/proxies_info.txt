@@ -15,6 +15,7 @@ https://hide.mn/en/proxy-list/
 
 Платні проксі:
 
+https://brightdata.com/proxy-types/residential-proxies
 https://proxyscrape.com/
 https://proxymesh.com/
 https://decodo.com/
